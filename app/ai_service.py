@@ -5,10 +5,19 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-client = Groq(api_key=os.getenv("GROQ_API_KEY"))
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+if not GROQ_API_KEY or GROQ_API_KEY == "your_groq_key_here":
+    raise ValueError("GROQ_API_KEY is not set in .env file")
+
+client = Groq(api_key=GROQ_API_KEY)
 
 
 def screen_resume(job_description: str, resume_text: str) -> dict:
+    if not job_description or not job_description.strip():
+        raise ValueError("Job description cannot be empty")
+    if not resume_text or not resume_text.strip():
+        raise ValueError("Resume text cannot be empty")
+    
     response = client.chat.completions.create(
         model="llama3-8b-8192",
         messages=[
@@ -24,6 +33,7 @@ Respond ONLY in valid JSON with no extra text or markdown:
             }
         ],
         temperature=0.3,
+        max_tokens=500,
     )
     raw = response.choices[0].message.content.strip()
     raw = raw.replace("```json", "").replace("```", "").strip()
@@ -39,9 +49,10 @@ Respond ONLY in valid JSON with no extra text or markdown:
 
     if "score" in result:
         score = float(result["score"])
-        if score >= 75:
+        result["score"] = max(0.0, min(100.0, score))
+        if result["score"] >= 75:
             result["match_level"] = "Strong"
-        elif score >= 50:
+        elif result["score"] >= 50:
             result["match_level"] = "Moderate"
         else:
             result["match_level"] = "Weak"
