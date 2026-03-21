@@ -157,37 +157,78 @@ Authorization: Bearer <your_jwt_token>
 ```
 
 #### GET /screen/all
-Get all screenings (admin only).
+Get all screenings (admin only). Supports pagination with `skip` and `limit` params.
+
+**Query Parameters:**
+- `skip` (int, default=0): Number of records to skip
+- `limit` (int, default=10, max=100): Number of records to return
+- `match_level` (string, optional): Filter by "Strong", "Moderate", or "Weak"
 
 **Headers:**
 ```
 Authorization: Bearer <admin_jwt_token>
 ```
 
+#### GET /screen/{screening_id}
+Get a specific screening by ID (owner or admin only).
+
+#### GET /screen/stats/me
+Get current user's screening statistics.
+
 **Response:**
 ```json
-[
-  {
-    "id": 1,
-    "user_id": 1,
-    "job_description": "We are looking for a Python developer...",
-    "resume_text": "John Doe is a Python developer...",
-    "score": 85.5,
-    "feedback": "The candidate has strong Python skills...",
-    "match_level": "Strong",
-    "created_at": "2024-01-15T10:30:00"
-  },
-  {
-    "id": 2,
-    "user_id": 2,
-    "job_description": "We need a Java developer...",
-    "resume_text": "Jane Smith is a Java developer...",
-    "score": 45.0,
-    "feedback": "The resume does not match...",
-    "match_level": "Weak",
-    "created_at": "2024-01-15T11:00:00"
-  }
-]
+{
+  "total_screenings": 15,
+  "strong_matches": 5,
+  "moderate_matches": 7,
+  "weak_matches": 3,
+  "average_score": 62.5
+}
+```
+
+#### GET /screen/stats/all
+Get overall statistics (admin only).
+
+**Response:**
+```json
+{
+  "total_screenings": 150,
+  "total_users": 25,
+  "strong_matches": 45,
+  "moderate_matches": 70,
+  "weak_matches": 35,
+  "average_score": 58.3
+}
+```
+
+#### DELETE /screen/{screening_id}
+Delete a screening (owner or admin only).
+
+### Users
+
+#### GET /users/me
+Get current user's profile.
+
+**Response:**
+```json
+{
+  "id": 1,
+  "username": "johndoe",
+  "role": "user"
+}
+```
+
+#### GET /users/
+List all users (admin only).
+
+#### PATCH /users/{user_id}/role
+Update a user's role (admin only).
+
+**Request Body:**
+```json
+{
+  "role": "admin"
+}
 ```
 
 ## Match Levels
@@ -222,5 +263,7 @@ Authorization: Bearer <admin_jwt_token>
 
 - The database (SQLite) is automatically created on first run
 - JWT tokens expire after 30 minutes (configurable in .env)
-- To create an admin user, manually update the `role` field in the database to "admin"
+- To make a user admin, use `PATCH /users/{user_id}/role` with role="admin"
 - Groq offers free API access with generous limits - perfect for development and testing
+- All endpoints support pagination (skip/limit) for better performance
+- Filter screenings by match_level (Strong/Moderate/Weak) on history and all endpoints
