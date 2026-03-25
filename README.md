@@ -1,6 +1,10 @@
 # AI Resume Screener API
 
-A FastAPI-based REST API that uses AI to screen resumes against job descriptions. The API leverages Groq's free LLM (llama3-8b-8192) to analyze resumes and provide match scores, levels, and feedback.
+A FastAPI-based REST API that uses AI to screen resumes against job descriptions. The API leverages Groq's free LLM (llama-3.1-8b-instant) to analyze resumes and provide match scores, levels, and feedback.
+
+## Demo Video
+
+![API Demo](Screen%20Recording%202026-03-25%20221338.mp4)
 
 ## Tech Stack
 
