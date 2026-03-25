@@ -1,5 +1,10 @@
 # AI Resume Screener API
 
+[![Python](https://img.shields.io/badge/Python-3.11+-blue?logo=python)](https://www.python.org/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.109+-00.svg?logo=fastapi)](https://fastapi.tiangolo.com/)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+[![GitHub stars](https://img.shields.io/github/stars/sajadkoder/ai-resume-screener?style=social)](https://github.com/sajadkoder/ai-resume-screener/stargazers)
+
 A FastAPI-based REST API that uses AI to screen resumes against job descriptions. The API leverages Groq's free LLM (llama-3.1-8b-instant) to analyze resumes and provide match scores, levels, and feedback.
 
 ## Demo Video
@@ -271,3 +276,17 @@ Update a user's role (admin only).
 - Groq offers free API access with generous limits - perfect for development and testing
 - All endpoints support pagination (skip/limit) for better performance
 - Filter screenings by match_level (Strong/Moderate/Weak) on history and all endpoints
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
