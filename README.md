@@ -7,9 +7,24 @@
 
 A FastAPI-based REST API that uses AI to screen resumes against job descriptions. The API leverages Groq's free LLM (llama-3.1-8b-instant) to analyze resumes and provide match scores, levels, and feedback.
 
+## Features
+
+- 🤖 **AI-Powered Screening** - Uses Groq's LLM to analyze resume-job description matches
+- 🔐 **JWT Authentication** - Secure user registration and login with JWT tokens
+- 📊 **Screening History** - Track all your resume screenings with pagination
+- 📈 **Statistics** - View match level distribution and average scores
+- 👥 **User Management** - Admin role for managing users and viewing all data
+- 💾 **SQLite Database** - Lightweight, persistent storage with SQLAlchemy
+- 📚 **Interactive Docs** - Swagger UI for easy API exploration
+
 ## Demo Video
 
 ![API Demo](Screen%20Recording%202026-03-25%20221338.mp4)
+
+## Screenshots
+
+### Swagger UI - API Documentation
+![Swagger UI](Screenshot%202026-03-26%20011724.png)
 
 ## Tech Stack
 
@@ -24,9 +39,24 @@ A FastAPI-based REST API that uses AI to screen resumes against job descriptions
 
 ## Setup Instructions
 
+### Quick Start
+```bash
+# Clone and setup
+git clone https://github.com/sajadkoder/ai-resume-screener.git
+cd ai-resume-screener-api
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Add your Groq API key in .env file
+
+# Run the server
+uvicorn app.main:app --reload
+```
+
 ### 1. Clone the repository
 ```bash
-git clone <repository-url>
+git clone https://github.com/sajadkoder/ai-resume-screener.git
 cd ai-resume-screener-api
 ```
 
