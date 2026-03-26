@@ -9,13 +9,13 @@ A FastAPI-based REST API that uses AI to screen resumes against job descriptions
 
 ## Features
 
-- 🤖 **AI-Powered Screening** - Uses Groq's LLM to analyze resume-job description matches
-- 🔐 **JWT Authentication** - Secure user registration and login with JWT tokens
-- 📊 **Screening History** - Track all your resume screenings with pagination
-- 📈 **Statistics** - View match level distribution and average scores
-- 👥 **User Management** - Admin role for managing users and viewing all data
-- 💾 **SQLite Database** - Lightweight, persistent storage with SQLAlchemy
-- 📚 **Interactive Docs** - Swagger UI for easy API exploration
+- **AI-Powered Screening** - Uses Groq's LLM to analyze resume-job description matches
+- **JWT Authentication** - Secure user registration and login with JWT tokens
+- **Screening History** - Track all your resume screenings with pagination
+- **Statistics** - View match level distribution and average scores
+- **User Management** - Admin role for managing users and viewing all data
+- **SQLite Database** - Lightweight, persistent storage with SQLAlchemy
+- **Interactive Docs** - Swagger UI for easy API exploration
 
 ## Demo Video
 
